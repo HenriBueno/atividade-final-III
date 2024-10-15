@@ -4,7 +4,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import { PokemonType } from '../../store/models/PokemonSlice';
-import { Box, Grid2, IconButton } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState } from 'react';
 

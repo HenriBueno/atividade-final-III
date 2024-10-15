@@ -6,15 +6,15 @@ export interface PokemonType{
     name: string,
     abilities: [{ ability: { name: string, url: string }, is_hidden: boolean }],
     weight: number,
-    sprites: { back_default: string, back_shiny: string, front_default: string, front_shiny: string, other: {"official-artwork": {front_default: string}} },
+    sprites: { back_default: string, back_shiny: string, front_default: string, front_shiny: string, other: {"official-artwork": {front_default: string, front_shiny: string} },
     stats: [{ base_stat: number, stat: { name: string, url: string } }]
-    
+}
 }
 
 const initialState : PokemonType[] = []
 
-export const getPokemons = createAsyncThunk('pokemons/getPokemons', async () => {
-    const results = await doGet('pokemon/?offset=0&limit=24');
+export const getPokemons = createAsyncThunk('pokemons/getPokemons', async ({ offset, limit }: { offset: number; limit: number }) => {
+    const results = await doGet(`pokemon/?offset=${offset}&limit=${limit}`);
     const pokemons: PokemonType[] = []
     for (const pokemon of results.results) {
         const response = await doGet (`pokemon/${pokemon.name}`)
@@ -23,6 +23,7 @@ export const getPokemons = createAsyncThunk('pokemons/getPokemons', async () => 
 
     return pokemons
 })
+
 
 const pokemonsSlice = createSlice ({
     name: 'pokemon',
