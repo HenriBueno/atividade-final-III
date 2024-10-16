@@ -5,6 +5,7 @@ export interface PokemonType{
     id: string,
     name: string,
     abilities: [{ ability: { name: string, url: string }, is_hidden: boolean }],
+    height: string,
     weight: number,
     sprites: { back_default: string, back_shiny: string, front_default: string, front_shiny: string, other: {"official-artwork": {front_default: string, front_shiny: string} },
     stats: [{ base_stat: number, stat: { name: string, url: string } }]

@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import PokemonSlice from './PokemonSlice';
+import PokemonSlice from './PokemonsSlice';
 
 
 export default combineReducers({
