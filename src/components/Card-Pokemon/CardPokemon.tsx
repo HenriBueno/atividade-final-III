@@ -8,7 +8,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { likePokemon } from '../../store/models/PokemonLikeSlice';
-
+//teste
 
 interface CardPokemonProps {
   pokemon?: PokemonType;
