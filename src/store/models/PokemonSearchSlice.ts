@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { PokemonType } from '../models/PokemonsSlice';
 import doGet from '../../services/api';
-import { useAppSelector } from '../hooks';
+
 
 interface PokemonListResponse {
   results: { name: string; url: string }[]; // Ajuste conforme a API retorna
@@ -12,7 +12,7 @@ const initialState: PokemonType[] = [];
 
 export const getPokemonSearch = createAsyncThunk('pokemon/getPokemonSearch', async (search: string) => {
   const firstResponse: PokemonListResponse = await doGet(`/pokemon/?&limit=1302`);
-  const response: PokemonType[] = [];
+
 
   if (search.length > 2) {
     const filter = firstResponse.results.filter(pokemon =>

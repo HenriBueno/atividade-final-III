@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Header from '../config/layout/Header';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { useAppSelector } from '../store/hooks';
 import { PokemonType } from '../store/models/PokemonsSlice';
 import { Container, Grid2, Typography } from '@mui/material';
 import ModalPokemon from '../components/Modal-Pokemon/ModalPokemon';
 import CardPokemon from '../components/Card-Pokemon/CardPokemon';
-import { Link } from 'react-router-dom';
+
 
 function Pokedex() {
   const [open, setOpen] = useState<boolean>(false);

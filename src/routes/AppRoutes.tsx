@@ -7,12 +7,12 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Home />,
-    // errorElement: <Error404 />,
+     errorElement: <Error404 />,
   },
   {
     path: '/pokedex',
     element: <Pokedex />,
-    // errorElement: <Error404 />,
+     errorElement: <Error404 />,
   },
 ]);
 
