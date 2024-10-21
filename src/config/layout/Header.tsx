@@ -7,7 +7,7 @@ import { Grid2 } from '@mui/material';
 import Logo from '../../assets/logo-pokemon.png'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { useAppDispatch} from '../../store/hooks';
 import { getPokemonSearch } from '../../store/models/PokemonSearchSlice';
 
 

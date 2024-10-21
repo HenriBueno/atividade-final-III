@@ -6,7 +6,7 @@ import DialogContent from '@mui/material/DialogContent';
 
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import { Box, CardMedia, LinearProgress, Typography, Grid, Grid2 } from '@mui/material';
+import { Box, CardMedia, LinearProgress, Typography, Grid} from '@mui/material';
 import { PokemonType } from '../../store/models/PokemonsSlice';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({

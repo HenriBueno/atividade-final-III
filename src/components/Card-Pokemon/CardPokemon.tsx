@@ -8,7 +8,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { likePokemon } from '../../store/models/PokemonLikeSlice';
-import { useParams } from 'react-router-dom';
+
 
 interface CardPokemonProps {
   pokemon?: PokemonType;
@@ -17,7 +17,6 @@ interface CardPokemonProps {
 
 export default function CardPokemon({ pokemon, action }: CardPokemonProps) {
   const dispatch = useAppDispatch();
-  const selector = useAppSelector(state => state.pokemon);
   const likeSelector = useAppSelector(state => state.likes);
 
   const alreadyLiked = likeSelector.pokemon.find(item => item.id === pokemon?.id);
