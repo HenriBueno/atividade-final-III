@@ -16,8 +16,19 @@ function ButtonPage({ action, page, disabled }: ButtonPageProps) {
         left: page === 'arrowback' ? 225 : 'auto',
         right: page === 'ArrowForward' ? 210 : 'auto',
         position: 'fixed',
-        height: '100%',
-        marginBottom:'350px',
+        height: '12%',
+        marginBottom:'12.5%',
+        '&:hover': {
+          boxShadow: 'none',
+          borderRadius:'50%',
+          transition: 'box-shadow 0.5s ease',
+          '&:hover': {
+            boxShadow: '0px 6px 25px rgba(0, 0, 0, 0.2)',
+          },
+        },
+        
+        
+        
       }}
     >
       <IconButton aria-label={`page-${page}`} size="large" onClick={action} disabled={disabled}>
@@ -26,10 +37,12 @@ function ButtonPage({ action, page, disabled }: ButtonPageProps) {
             aria-label={`page-${page}`}
             sx={{
               fontSize: '120px ',
+              
+              
             }}
           />
         ) : (
-          <ArrowForward aria-label={`page-${page}`} sx={{ fontSize: '120px ' }} />
+          <ArrowForward aria-label={`page-${page}`} sx={{ fontSize: '120px '}} />
         )}
       </IconButton>
     </Box>

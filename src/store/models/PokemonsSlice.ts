@@ -7,8 +7,8 @@ export interface PokemonType{
     abilities: [{ ability: { name: string, url: string }, is_hidden: boolean }],
     height: string,
     weight: number,
-    sprites: { back_default: string, back_shiny: string, front_default: string, front_shiny: string, other: {"official-artwork": {front_default: string, front_shiny: string} },
-    stats: [{ base_stat: number, stat: { name: string, url: string } }]
+    stats: [{ base_stat: number; stat: { name: string; url: string } }];
+    sprites: { back_default: string, back_shiny: string, front_default: string, front_shiny: string, other: {"official-artwork": {front_default?: string, front_shiny?: string}},
 }
 }
 
@@ -21,7 +21,7 @@ export const getPokemons = createAsyncThunk('pokemons/getPokemons', async ({ off
         const response = await doGet (`pokemon/${pokemon.name}`)
         pokemons.push(response)
     }
-
+    
     return pokemons
 })
 

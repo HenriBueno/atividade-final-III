@@ -5,6 +5,11 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { Grid2 } from '@mui/material';
 import Logo from '../../assets/logo-pokemon.png'
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { getPokemonSearch } from '../../store/models/PokemonSearchSlice';
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -36,7 +41,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: '100%',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     [theme.breakpoints.up('sm')]: {
@@ -49,33 +53,44 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
+  const [search, setSearch] = useState<string>('');
+  const dispatch = useAppDispatch();
+
+
+  useEffect(() => {
+    if (search.length > 2) {
+      dispatch(getPokemonSearch(search));
+    }
+  }, [search, dispatch]);
+
   return (
-    <Box sx={{ flexGrow: 1}}>
-      <AppBar >
-      <Grid2 container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems="center" display='flex' justifyContent='space-between' height='8vh' >
-      <Grid2 size={{ xs: 4, md: 4 }} marginLeft={5}>
-        <img src={Logo} alt="Logo do pokemon" 
-        style={{ 
-            width: '100%', 
-            maxWidth: '150px', 
-            height: 'auto', 
-            display:'flex',
-            alignItems:'center'
-          }} />
-      </Grid2>
-        <Grid2 size={{ xs: 4, md: 4 }} marginRight={5} display="flex" justifyContent="end">
-
-        <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-
-
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar>
+        <Grid2 container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} alignItems="center" display='flex' justifyContent='space-between' height='8vh'>
+          <Grid2 size={{ xs: 4, md: 4 }} marginLeft={5}>
+            <Link to="/">
+              <img src={Logo} alt="Logo do Pokemon"
+                style={{
+                  width: '100%',
+                  maxWidth: '150px',
+                  height: 'auto',
+                  display: 'flex',
+                  alignItems: 'center'
+                }} />
+            </Link>
+          </Grid2>
+          <Grid2 size={{ xs: 4, md: 4 }} marginRight={5} display="flex" justifyContent="end">
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Procurar…"
+                inputProps={{ 'aria-label': 'search' }}
+                onChange={e => setSearch(e.target.value)}
+                value={search}
+              />
+            </Search>
           </Grid2>
         </Grid2>
       </AppBar>
